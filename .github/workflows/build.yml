@@ -54,7 +54,16 @@ jobs:
         CURRENT_IMAGE_NAME=$(basename $(echo repository/src/workspace/*.img | head -n 1))
         IMAGE=$NOW-${CURRENT_IMAGE_NAME}
 
+        echo $CURRENT_IMAGE_NAME
+        echo a
+        echo $IMAGE
+
+        echo b
+        ls repository/src/workspace/
+
         cp repository/src/workspace/${CURRENT_IMAGE_NAME} $IMAGE
+
+        ls .
 
         echo "::set-output name=image::$IMAGE"
 
