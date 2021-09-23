@@ -1,0 +1,13 @@
+export DIST_NAME=OctoPi-Klipper
+export DIST_VERSION=1.0.0
+export MODULES="base(disable-services(klipper))"
+
+export BASE_IMAGE_ENLARGEROOT=2000
+
+export BASE_IMAGE_PATH=${DIST_PATH}/image
+export BASE_ZIP_IMG=`ls -t $BASE_IMAGE_PATH/octopi-*.zip | head -n 1`
+
+# Rename release image
+export DEBIAN_RELESAE=$(echo "${BASE_ZIP_IMG}" | cut -d- -f2)
+export BASE_RELEASE_IMG_NAME=octopi-klipper-armhf-lite-${DIST_VERSION}.img
+export BASE_RELEASE_ZIP_NAME=octopi-klipper-armhf-${DIST_VERSION}.zip

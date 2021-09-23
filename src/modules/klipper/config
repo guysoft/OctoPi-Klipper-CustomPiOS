@@ -1,0 +1,10 @@
+# Klipper repo
+[ -n "$KLIPPER_REPO_SHIP" ] || KLIPPER_REPO_SHIP=https://github.com/KevinOConnor/klipper.git
+[ -n "$KLIPPER_REPO_BUILD" ] || KLIPPER_REPO_BUILD=
+[ -n "$KLIPPER_REPO_BRANCH" ] || KLIPPER_REPO_BRANCH=master
+[ -n "$KLIPPER_REPO_DEPTH" ] || KLIPPER_REPO_DEPTH=1
+[ -n "$KLIPPER_INCLUDE_KLIPPER" ] || KLIPPER_INCLUDE_KLIPPER=yes
+
+# OctoprintKlipper plugin
+[ -n "$KLIPPER_INCLUDE_OCTOKLIPPER_PLUGIN" ] || KLIPPER_INCLUDE_OCTOKLIPPER_PLUGIN=yes
+[ -n "$KLIPPER_OCTOKLIPPER_URL" ] || KLIPPER_OCTOKLIPPER_URL="https://github.com/thelastWallE/OctoprintKlipperPlugin/archive/master.zip"
