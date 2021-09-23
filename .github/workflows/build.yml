@@ -52,7 +52,7 @@ jobs:
         source repository/src/config
         NOW=$(date +"%Y-%m-%d-%H%M")
         CURRENT_IMAGE_NAME=$(basename $(echo repository/src/workspace/*.img | head -n 1))
-        IMAGE=$NOW-${CURRENT_IMAGE_NAME}
+        IMAGE=$NOW_${CURRENT_IMAGE_NAME}
 
         echo $CURRENT_IMAGE_NAME
         echo a
@@ -72,4 +72,4 @@ jobs:
       if: github.event_name == 'schedule'
       with:
         name: ${{ steps.copy.outputs.image }}
-        path: ${{ steps.copy.outputs.image }}.img
+        path: ${{ steps.copy.outputs.image }}
