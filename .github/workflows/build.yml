@@ -61,8 +61,8 @@ jobs:
         echo b
         ls repository/src/workspace/
 
-        cp repository/src/workspace/${CURRENT_IMAGE_NAME} $IMAGE
-
+        cp -v repository/src/workspace/${CURRENT_IMAGE_NAME} $IMAGE
+        echo c
         ls .
 
         echo "::set-output name=image::$IMAGE"
