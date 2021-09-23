@@ -57,7 +57,7 @@ jobs:
         IMAGE_BASENAME=$(basename $IMAGE .img)
         IMAGE_BASENAME=$(basename $IMAGE_BASENAME .raw)
 
-        echo "::set-output name=image::$IMAGE"
+        echo "::set-output name=image::$IMAGE_BASENAME"
 
     # artifact upload will take care of zipping for us
     - uses: actions/upload-artifact@v1
