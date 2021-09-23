@@ -26,10 +26,10 @@ jobs:
         path: repository
         submodules: true
 
-    - name: Download Raspbian Image
+    - name: Download OctoPi Image
       run: |
         cd repository/src/image
-        wget -c --trust-server-names 'https://octopi.octoprint.org/latest'
+        wget -c --content-disposition --trust-server-names 'https://octopi.octoprint.org/latest'
 
     - name: Update CustomPiOS Paths
       run: |

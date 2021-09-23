@@ -75,7 +75,7 @@ You can build it by issuing the following commands::
     git clone https://github.com/guysoft/CustomPiOS.git
     git clone https://github.com/guysoft/OctoPi-Klipper.git
     cd OctoPi-Klipper/src/image
-    wget -c --trust-server-names 'https://octopi.octoprint.org/latest'
+    wget -c --content-disposition --trust-server-names 'https://octopi.octoprint.org/latest'
     cd ..
     ../../CustomPiOS/src/update-custompios-paths
     sudo modprobe loop
