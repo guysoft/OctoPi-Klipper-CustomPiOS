@@ -53,23 +53,15 @@ jobs:
         NOW=$(date +"%Y-%m-%d-%H%M")
         CURRENT_IMAGE_NAME=$(basename $(echo repository/src/workspace/*.img | head -n 1))
         IMAGE=$NOW_${CURRENT_IMAGE_NAME}
-
-        echo $CURRENT_IMAGE_NAME
-        echo a
-        echo $IMAGE
-
-        echo b
-        ls repository/src/workspace/
-
         cp -v repository/src/workspace/${CURRENT_IMAGE_NAME} $IMAGE
-        echo c
-        ls .
+        IMAGE_BASENAME=$(basename $IMAGE .img)
+        IMAGE_BASENAME=$(basename $IMAGE_BASENAME .raw)
 
         echo "::set-output name=image::$IMAGE"
 
     # artifact upload will take care of zipping for us
     - uses: actions/upload-artifact@v1
-      if: github.event_name == 'schedule'
+      # if: github.event_name == 'schedule'
       with:
         name: ${{ steps.copy.outputs.image }}
-        path: ${{ steps.copy.outputs.image }}
+        path: ${{ steps.copy.outputs.image }}.img
