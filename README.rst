@@ -14,9 +14,7 @@ Where to get it?
 
 Official mirror is `here <https://github.com/guysoft/OctoPi-Klipper/releases>`_
 
-Second mirror is `here <https://octopi.gnethomelinux.com/Distros/OctoPi-Klipper/>`_
-
-Nightly builds are available `here <http://unofficialpi.org/Distros/OctoPi-Klipper/nightly/>`_
+Nightly builds are available `here <https://github.com/guysoft/OctoPi/actions/workflows/build.yml?query=event%3Aschedule>`_
 
 How to use it?
 --------------
