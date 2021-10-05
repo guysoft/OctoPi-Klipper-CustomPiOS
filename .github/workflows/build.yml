@@ -2,6 +2,9 @@ name: Build Image
 
 on: 
   push:
+    branches:
+      - master
+      - actions-debug
   schedule: 
     - cron: '0 0 * * *'
 
