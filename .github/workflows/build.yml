@@ -68,7 +68,7 @@ jobs:
         source repository/src/config
         NOW=$(date +"%Y-%m-%d-%H%M")
         CURRENT_IMAGE_NAME=$(basename $(echo repository/src/workspace/*.img | head -n 1))
-        IMAGE=$NOW_${CURRENT_IMAGE_NAME/octopi/octopi-klipper}
+        IMAGE=$NOW_${CURRENT_IMAGE_NAME}
         cp -v repository/src/workspace/${CURRENT_IMAGE_NAME} $IMAGE
         IMAGE_BASENAME=$(basename $IMAGE .img)
         IMAGE_BASENAME=$(basename $IMAGE_BASENAME .raw)
