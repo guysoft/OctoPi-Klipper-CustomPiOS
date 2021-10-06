@@ -67,11 +67,17 @@ jobs:
       run: |
         source repository/src/config
         NOW=$(date +"%Y-%m-%d-%H%M")
+        echo b
+        echo $NOW
         CURRENT_IMAGE_NAME=$(basename $(echo repository/src/workspace/*.img | head -n 1))
         IMAGE=$NOW_${CURRENT_IMAGE_NAME}
+        echo a
+        echo $IMAGE
         cp -v repository/src/workspace/${CURRENT_IMAGE_NAME} $IMAGE
         IMAGE_BASENAME=$(basename $IMAGE .img)
         IMAGE_BASENAME=$(basename $IMAGE_BASENAME .raw)
+        echo c
+        echo $IMAGE_BASENAME
 
         echo "::set-output name=image::$IMAGE_BASENAME"
 
