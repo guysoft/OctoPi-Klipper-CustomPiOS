@@ -56,7 +56,7 @@ jobs:
         BASE_RELEASE_COMPRESS: no
       run: |
         cd repository/src
-        sudo bash -x ../../CustomPiOS/src/update-custompios-paths/release "${VARIANT}"
+        sudo bash -x ../../CustomPiOS/src/release "${VARIANT}"
 
 
     - name: Copy output
