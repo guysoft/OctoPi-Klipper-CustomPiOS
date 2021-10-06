@@ -57,13 +57,9 @@ jobs:
       run: |
         cd repository/src
         # CUSTOM_PI_OS_PATH is needed, its set in build_dist. Setting here manually
-        echo b
-        realpath ../../CustomPiOS/src/
         export CUSTOM_PI_OS_PATH=$(realpath ../../CustomPiOS/src/)
-        echo a
-        echo $CUSTOM_PI_OS_PATH
         source config
-        ../../CustomPiOS/src/release "${VARIANT}"
+        sudo --preserve-env ../../CustomPiOS/src/release "${VARIANT}"
 
 
     - name: Copy output
