@@ -63,7 +63,7 @@ jobs:
         echo a
         echo $CUSTOM_PI_OS_PATH
         source config
-        sudo bash -x ../../CustomPiOS/src/release "${VARIANT}"
+        ../../CustomPiOS/src/release "${VARIANT}"
 
 
     - name: Copy output
