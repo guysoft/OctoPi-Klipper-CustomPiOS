@@ -56,6 +56,8 @@ jobs:
         BASE_RELEASE_COMPRESS: no
       run: |
         cd repository/src
+        # CUSTOM_PI_OS_PATH is needed, its set in build_dist. Setting here manually
+        export CUSTOM_PI_OS_PATH=$(<./custompios_path)
         source config
         sudo bash -x ../../CustomPiOS/src/release "${VARIANT}"
 
