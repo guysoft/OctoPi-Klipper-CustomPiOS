@@ -69,7 +69,8 @@ jobs:
         echo "${CURRENT_IMAGE_NAME}"
         IMAGE="${NOW}_${CURRENT_IMAGE_NAME}"
         sudo chmod 666 -R "repository/src/workspace"
-        sudo chmod 666 "repository/src/workspace/${CURRENT_IMAGE_NAME}"
+        sudo chmod -R 666 "repository/src/workspace/${CURRENT_IMAGE_NAME}"
+        sudo chmod 777 .
         mv -v "repository/src/workspace/${CURRENT_IMAGE_NAME}" "${IMAGE}"
         IMAGE_BASENAME="$(basename $IMAGE .img)"
         IMAGE_BASENAME="$(basename $IMAGE_BASENAME .raw)"
