@@ -2,12 +2,16 @@ name: Build Image
 
 on: 
   push:
+    branches:
+      - '*'
   schedule: 
     - cron: '0 0 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VARIANT: default
     steps:
     - name: Install Dependencies
       run: |
@@ -44,18 +48,32 @@ jobs:
       run: |
         sudo modprobe loop
         cd repository/src
-        sudo bash -x ./build_dist
+        sudo bash -x ./build_dist "${VARIANT}"
+        
+    - name: Release Image
+      env:
+        BASE_RELEASE_COMPRESS: no
+      run: |
+        cd repository/src
+        # CUSTOM_PI_OS_PATH is needed, its set in build_dist. Setting here manually
+        export CUSTOM_PI_OS_PATH="$(realpath ../../CustomPiOS/src/)"
+        source config
+        sudo --preserve-env ../../CustomPiOS/src/release "${VARIANT}"
 
-    - name: Copy output
+
+    - name: Copy output and add timestamp
       id: copy
       run: |
-        source repository/src/config
-        NOW=$(date +"%Y-%m-%d-%H%M")
-        CURRENT_IMAGE_NAME=$(basename $(echo repository/src/workspace/*.img | head -n 1))
-        IMAGE=$NOW_${CURRENT_IMAGE_NAME/octopi/octopi-klipper}
-        cp -v repository/src/workspace/${CURRENT_IMAGE_NAME} $IMAGE
-        IMAGE_BASENAME=$(basename $IMAGE .img)
-        IMAGE_BASENAME=$(basename $IMAGE_BASENAME .raw)
+        NOW="$(date +"%Y-%m-%d-%H%M")"
+        CURRENT_IMAGE_NAME="$(basename $(echo repository/src/workspace/*.img | head -n 1))"
+        echo "${CURRENT_IMAGE_NAME}"
+        IMAGE="${NOW}_${CURRENT_IMAGE_NAME}"
+        sudo chmod 777 -R "repository/src/workspace"
+        sudo chmod -R 666 "repository/src/workspace/${CURRENT_IMAGE_NAME}"
+        sudo chmod 777 .
+        mv -v "repository/src/workspace/${CURRENT_IMAGE_NAME}" "${IMAGE}"
+        IMAGE_BASENAME="$(basename $IMAGE .img)"
+        IMAGE_BASENAME="$(basename $IMAGE_BASENAME .raw)"
 
         echo "::set-output name=image::$IMAGE_BASENAME"
 
