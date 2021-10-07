@@ -1,6 +1,6 @@
 export DIST_NAME=OctoPi-Klipper
 export BASE_OVERRIDE_HOSTNAME=octopi
-export DIST_VERSION=1.0.0
+export DIST_VERSION=0.18.0
 export MODULES="base(disable-services(klipper))"
 
 export BASE_IMAGE_ENLARGEROOT=2000
